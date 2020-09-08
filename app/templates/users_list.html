@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{ user.email }}
+<a type="button" href="{{ url_for('.logout') }}" class="btn btn-dark">Logout</a>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Email</th>
+      <th scope="col">Role</th>
+     {% if user.is_moderator %}<th scope="col">Action</th> {% endif %}
+    </tr>
+  </thead>
+  <tbody>
+  {% for u in users %}
+    <tr>
+      <th scope="row">{{ u.id }}</th>
+      <td>{{ u.email }}</td>
+      <td>{{ u.role }}</td>
+      {% if user.is_moderator %}
+        <td>
+            <a class="btn btn-primary" href="{{ url_for('.user_crud', action='edit',id=u.id) }}" role="button">Edit</a>
+            <a class="btn btn-danger" href="{{ url_for('.user_crud', action='delete',id=u.id) }}" role="button">Delete</a>
+        </td>
+       {% endif %}
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+{% if user.is_moderator %}
+    <td>
+        <a type="button" href="{{ url_for('.user_crud', action='add', id='new') }}" class="btn btn-success">Add new user</a>
+    </td>
+{% endif %}
+{% endblock %}

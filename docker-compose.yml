@@ -1,0 +1,31 @@
+version: '3'
+services:
+
+  postgres:
+    image: postgres:13-alpine
+    environment:
+      - POSTGRES_NAME=test
+      - POSTGRES_USER=test
+      - POSTGRES_DB=test
+      - POSTGRES_PASSWORD=test
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data/pgdata
+
+# FIXME: не завелось с первого раза надо разбираться, опять же не время
+
+#  backend:
+#    image: 63phc/challenge_alar
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+##    command: "uwsgi --http 0.0.0.0:5000 -w run:app"
+##    command: "gunicorn -b :8080 run:app"
+#    ports:
+#      - "5000:5000"
+#    depends_on:
+#      - postgres
