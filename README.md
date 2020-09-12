@@ -2,13 +2,14 @@
 
 ```
 # pg в докере, если есть локальный пг то надо поменять креды в .env
-cp .env.example .env 
-docker-compose up
-python -m venv Venv
-source Venv/bin/activate
-export FLASK_APP=run.py
-flask db upgrade
-flask run
+>> cp .env.example .env 
+>> docker-compose up -d
+>> python3 -m venv Venv
+>> source Venv/bin/activate
+>> pip install -r requirements.txt
+>> export FLASK_APP=run.py
+>> flask db upgrade
+>> flask run
 ```
 
 1) первая часть http://127.0.0.1:5000/  креды test@test.test;test1234
