@@ -4,7 +4,7 @@ from flask_login import current_user
 from werkzeug.security import generate_password_hash
 from werkzeug.utils import redirect
 
-from app import db
+from app.db import db
 from app.db.models import User, Role
 from app.forms import CreateUserForm
 
