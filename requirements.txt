@@ -37,6 +37,6 @@ toml==0.10.1
 typed-ast==1.4.1
 typing-extensions==3.7.4.3
 uWSGI==2.0.19.1
-Werkzeug==0.16.1
+Werkzeug==2.3.8
 WTForms==2.3.3
 yarl==1.5.1
